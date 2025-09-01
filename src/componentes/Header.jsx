@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
 import Login from "./Login"
+import ShoppingCart from "./ShoppingCart"
 import "./Header.css"
 
 const Header = () => {
@@ -67,6 +68,8 @@ const Header = () => {
           onLoginSuccess={handleLoginSuccess}
         />
       )}
+      
+      <ShoppingCart />
     </>
   )
 }
