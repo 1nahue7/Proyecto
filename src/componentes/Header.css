@@ -23,11 +23,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   transition: all 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .logo-container {
@@ -251,6 +252,8 @@
   letter-spacing: 0.5px;
   flex-wrap: wrap;
   justify-content: center;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .username {
@@ -298,6 +301,25 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .header .container {
+    gap: 2.5rem;
+    padding: 1rem 1.8rem;
+  }
+  
+  .logo-container {
+    min-width: 260px;
+  }
+  
+  .nav {
+    gap: 1.8rem;
+  }
+  
+  .auth-section {
+    margin-left: 1.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .header .container {
     gap: 2rem;
@@ -338,6 +360,66 @@
   .auth-section {
     margin-left: 0.8rem;
   }
+  
+  .user-info {
+    gap: 0.8rem;
+  }
+  
+  .username {
+    font-size: 0.9rem;
+  }
+  
+  .user-role {
+    font-size: 0.8rem;
+  }
+  
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header .container {
+    gap: 1.2rem;
+    padding: 1rem 0.8rem;
+  }
+  
+  .logo-container {
+    min-width: 200px;
+  }
+  
+  .nav {
+    gap: 1rem;
+  }
+  
+  .auth-section {
+    margin-left: 0.5rem;
+  }
+  
+  .user-info {
+    gap: 0.6rem;
+  }
+  
+  .username {
+    font-size: 0.85rem;
+  }
+  
+  .user-role {
+    font-size: 0.75rem;
+  }
+  
+  .logout-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    min-width: 100px;
+  }
+  
+  .nav-link {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -377,6 +459,7 @@
     margin-top: 1rem;
     width: 100%;
     justify-content: center;
+    max-width: 400px;
   }
   
   .user-info {
@@ -384,6 +467,17 @@
     gap: 0.5rem;
     text-align: center;
     align-items: center;
+    width: 100%;
+  }
+  
+  .username, .user-role {
+    font-size: 1rem;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    max-width: 180px;
+    margin-top: 0.5rem;
   }
   
   .login-btn {
@@ -422,10 +516,12 @@
   
   .auth-section {
     margin-top: 0.8rem;
+    max-width: 350px;
   }
   
   .user-info {
     gap: 0.4rem;
+    width: 100%;
   }
   
   .username {
@@ -440,6 +536,13 @@
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     min-width: 100px;
+    width: 100%;
+    max-width: 160px;
+  }
+  
+  .login-btn {
+    width: 100%;
+    max-width: 180px;
   }
 }
 
@@ -473,10 +576,12 @@
   
   .auth-section {
     margin-top: 0.6rem;
+    max-width: 300px;
   }
   
   .user-info {
     gap: 0.3rem;
+    width: 100%;
   }
   
   .username {
@@ -491,11 +596,15 @@
     padding: 0.4rem 0.8rem;
     font-size: 0.7rem;
     min-width: 90px;
+    width: 100%;
+    max-width: 140px;
   }
   
   .login-btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.8rem;
     min-width: 120px;
+    width: 100%;
+    max-width: 160px;
   }
 }
