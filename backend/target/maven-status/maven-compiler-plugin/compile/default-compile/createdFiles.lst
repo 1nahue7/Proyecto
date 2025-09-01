@@ -1,0 +1,11 @@
+com/gamehubcafe/backend/util/JwtUtil.class
+com/gamehubcafe/backend/repository/UsuarioRepository.class
+com/gamehubcafe/backend/service/DataInitializationService.class
+com/gamehubcafe/backend/dto/LoginResponse.class
+com/gamehubcafe/backend/config/SecurityConfig.class
+com/gamehubcafe/backend/dto/LoginRequest.class
+com/gamehubcafe/backend/service/AuthService.class
+com/gamehubcafe/backend/GameHubCafeApplication.class
+com/gamehubcafe/backend/dto/RegistroRequest.class
+com/gamehubcafe/backend/controller/AuthController.class
+com/gamehubcafe/backend/model/Usuario.class

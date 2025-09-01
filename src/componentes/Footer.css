@@ -1,8 +1,34 @@
 .footer {
   background: linear-gradient(135deg, #1a1a2e, #16213e);
+  background-image: 
+    linear-gradient(135deg, #1a1a2e, #16213e),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 255, 255, 0.02) 3px,
+      rgba(0, 255, 255, 0.02) 6px
+    );
   padding: 2rem 0 1rem;
   margin-top: 3rem;
-  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  border-top: 3px solid rgba(0, 255, 255, 0.2);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(0, 255, 255, 0.3) 4px,
+    rgba(0, 255, 255, 0.3) 8px
+  );
 }
 
 .footer-contenido {
@@ -15,12 +41,22 @@
 .footer-seccion h3 {
   color: #00ffff;
   margin-bottom: 1rem;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.3),
+    2px 2px 0px rgba(0, 0, 0, 0.8);
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .footer-seccion h4 {
   color: #ffffff;
   margin-bottom: 0.5rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .footer-seccion ul {
@@ -31,23 +67,69 @@
   margin-bottom: 0.3rem;
   color: #cccccc;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0;
+  position: relative;
 }
 
 .footer-seccion ul li:hover {
   color: #00ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+  transform: translateX(5px);
+}
+
+.footer-seccion ul li::before {
+  content: '>';
+  position: absolute;
+  left: -15px;
+  color: #00ffff;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-seccion ul li:hover::before {
+  opacity: 1;
+  left: -20px;
 }
 
 .footer-seccion p {
   color: #cccccc;
   margin-bottom: 0.3rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .footer-inferior {
   text-align: center;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
   color: #888888;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.footer-inferior::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.4) 2px,
+    rgba(0, 255, 255, 0.4) 4px
+  );
 }
 
 @media (max-width: 768px) {

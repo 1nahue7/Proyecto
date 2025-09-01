@@ -14,11 +14,22 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    3px 3px 0px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
 }
 
 .contacto-header p {
   font-size: 1.2rem;
   color: #cccccc;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .contacto-contenido {
@@ -31,6 +42,12 @@
   color: #00ffff;
   margin-bottom: 2rem;
   font-size: 2rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    2px 2px 0px rgba(0, 0, 0, 0.8);
 }
 
 .info-item {
@@ -40,8 +57,28 @@
   margin-bottom: 2rem;
   padding: 1rem;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  background-image: 
+    linear-gradient(135deg, #1a1a2e, #16213e),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.02) 2px,
+      rgba(0, 255, 255, 0.02) 4px
+    );
+  border-radius: 0;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  position: relative;
+}
+
+.info-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
 }
 
 .info-item .icon {
@@ -52,10 +89,18 @@
 .info-item h4 {
   color: #00ffff;
   margin-bottom: 0.5rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .info-item p {
   color: #cccccc;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .redes {
@@ -65,6 +110,10 @@
 .redes h4 {
   color: #ff00ff;
   margin-bottom: 1rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .redes-links {
@@ -75,12 +124,25 @@
 
 .redes-links span {
   background: rgba(255, 0, 255, 0.1);
+  background-image: 
+    linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1)),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 0, 255, 0.05) 2px,
+      rgba(255, 0, 255, 0.05) 4px
+    );
   padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 0;
+  border: 2px solid rgba(255, 0, 255, 0.3);
   color: #ff00ff;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .redes-links span:hover {
@@ -92,12 +154,40 @@
   color: #00ffff;
   margin-bottom: 2rem;
   font-size: 2rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    2px 2px 0px rgba(0, 0, 0, 0.8);
 }
 
 .contacto-form form {
   background: linear-gradient(135deg, #1a1a2e, #16213e);
+  background-image: 
+    linear-gradient(135deg, #1a1a2e, #16213e),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.02) 2px,
+      rgba(0, 255, 255, 0.02) 4px
+    );
   padding: 2rem;
-  border-radius: 15px;
+  border-radius: 0;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  position: relative;
+}
+
+.contacto-form form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+}
   border: 1px solid rgba(0, 255, 255, 0.3);
 }
 

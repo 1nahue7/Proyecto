@@ -1,0 +1,25 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.settings.profile": "GoogleStyle",
+    "java.saveActions.organizeImports": true,
+    "java.cleanup.actionsOnSave": [
+        "addOverride",
+        "qualifyStaticMembers",
+        "qualifyMembers",
+        "qualifyStaticMembers",
+        "addOverride",
+        "qualifyMembers"
+    ],
+    "files.exclude": {
+        "**/target": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
+}
+
+
+

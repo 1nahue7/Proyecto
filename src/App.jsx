@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { AuthProvider } from "./context/AuthContext"
 import Header from "./componentes/Header"
 import Footer from "./componentes/Footer"
 import Home from "./paginas/Home"
@@ -9,20 +10,22 @@ import "./App.css"
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Servicios />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contacto />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Servicios />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contacto />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   )
 }
 
