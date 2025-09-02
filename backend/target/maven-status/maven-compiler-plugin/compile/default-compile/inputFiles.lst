@@ -1,12 +1,13 @@
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/dto/LoginResponse.java
-/Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/dto/RegistroRequest.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/dto/LoginRequest.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/util/JwtUtil.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/controller/AuthController.java
+/Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/dto/ErrorResponse.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/exception/GlobalExceptionHandler.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/config/SecurityConfig.java
-/Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/model/Usuario.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/service/DataInitializationService.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/service/AuthService.java
+/Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/dto/RegistroRequest.java
+/Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/model/Usuario.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/GameHubCafeApplication.java
 /Users/nahue/Proyecto-1/backend/src/main/java/com/gamehubcafe/backend/repository/UsuarioRepository.java

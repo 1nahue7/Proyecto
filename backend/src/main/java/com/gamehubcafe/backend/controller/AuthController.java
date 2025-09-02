@@ -3,6 +3,8 @@ package com.gamehubcafe.backend.controller;
 import com.gamehubcafe.backend.dto.LoginRequest;
 import com.gamehubcafe.backend.dto.LoginResponse;
 import com.gamehubcafe.backend.dto.RegistroRequest;
+import com.gamehubcafe.backend.dto.SuccessResponse;
+import com.gamehubcafe.backend.dto.ErrorResponse;
 import com.gamehubcafe.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +32,15 @@ public class AuthController {
     }
     
     @PostMapping("/registro")
-    public ResponseEntity<String> registro(@Valid @RequestBody RegistroRequest request) {
-        String resultado = authService.registro(request);
+    public ResponseEntity<Object> registro(@Valid @RequestBody RegistroRequest request) {
+        Object resultado = authService.registro(request);
         
-        if (resultado.contains("exitosamente")) {
+        if (resultado instanceof SuccessResponse) {
             return ResponseEntity.ok(resultado);
-        } else {
+        } else if (resultado instanceof ErrorResponse) {
             return ResponseEntity.badRequest().body(resultado);
+        } else {
+            return ResponseEntity.internalServerError().body(new ErrorResponse("Error interno del servidor"));
         }
     }
     

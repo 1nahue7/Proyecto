@@ -1,19 +1,17 @@
 package com.gamehubcafe.backend.exception;
 
+import com.gamehubcafe.backend.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
         StringBuilder errorMessage = new StringBuilder();
         
         ex.getBindingResult().getFieldErrors().forEach(error -> {
@@ -26,12 +24,16 @@ public class GlobalExceptionHandler {
             finalMessage = finalMessage.substring(0, finalMessage.length() - 1);
         }
         
-        return ResponseEntity.badRequest().body(finalMessage);
+        ErrorResponse errorResponse = new ErrorResponse(finalMessage, "validation_error");
+        return ResponseEntity.badRequest().body(errorResponse);
     }
     
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGenericException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body("Error interno del servidor: " + ex.getMessage());
+    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
+        ErrorResponse errorResponse = new ErrorResponse(
+            "Error interno del servidor: " + ex.getMessage(), 
+            "internal_error"
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 }

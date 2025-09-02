@@ -87,7 +87,13 @@ const Login = ({ onClose, onLoginSuccess }) => {
           }, 500)
         }
       } else {
-        setError(isLogin ? data.mensaje : data)
+        // Manejar errores del servidor
+        if (isLogin) {
+          setError(data.mensaje || data)
+        } else {
+          // Para registro, puede ser texto plano o objeto con mensaje
+          setError(data.mensaje || data)
+        }
         setLoading(false)
       }
     } catch (err) {

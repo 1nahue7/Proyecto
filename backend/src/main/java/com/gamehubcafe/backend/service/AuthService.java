@@ -3,6 +3,8 @@ package com.gamehubcafe.backend.service;
 import com.gamehubcafe.backend.dto.LoginRequest;
 import com.gamehubcafe.backend.dto.LoginResponse;
 import com.gamehubcafe.backend.dto.RegistroRequest;
+import com.gamehubcafe.backend.dto.SuccessResponse;
+import com.gamehubcafe.backend.dto.ErrorResponse;
 import com.gamehubcafe.backend.model.Usuario;
 import com.gamehubcafe.backend.repository.UsuarioRepository;
 import com.gamehubcafe.backend.util.JwtUtil;
@@ -58,16 +60,16 @@ public class AuthService {
         }
     }
     
-    public String registro(RegistroRequest request) {
+    public Object registro(RegistroRequest request) {
         try {
             // Verificar si el username ya existe
             if (usuarioRepository.existsByUsername(request.getUsername())) {
-                return "El username ya está en uso";
+                return new ErrorResponse("El username ya está en uso");
             }
             
             // Verificar si el email ya existe
             if (usuarioRepository.existsByEmail(request.getEmail())) {
-                return "El email ya está registrado";
+                return new ErrorResponse("El email ya está registrado");
             }
             
             // Crear nuevo usuario
@@ -85,10 +87,10 @@ public class AuthService {
             // Guardar usuario
             usuarioRepository.save(nuevoUsuario);
             
-            return "Usuario registrado exitosamente";
+            return new SuccessResponse("Usuario registrado exitosamente");
             
         } catch (Exception e) {
-            return "Error en el registro: " + e.getMessage();
+            return new ErrorResponse("Error en el registro: " + e.getMessage());
         }
     }
 }
