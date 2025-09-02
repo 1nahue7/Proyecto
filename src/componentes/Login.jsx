@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { API_ENDPOINTS } from '../config/config'
+import LoginSpinner from './LoginSpinner'
 import './Login.css'
 
 const Login = ({ onClose, onLoginSuccess }) => {
@@ -28,19 +29,26 @@ const Login = ({ onClose, onLoginSuccess }) => {
     setError('')
     setSuccess('')
 
+    // Crear una promesa que garantice al menos 1 segundo de carga
+    const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 1000))
+
     try {
       const endpoint = isLogin ? API_ENDPOINTS.LOGIN : API_ENDPOINTS.REGISTRO
       const payload = isLogin 
         ? { username: formData.username, password: formData.password }
         : { username: formData.username, email: formData.email, password: formData.password, nombre: formData.nombre, apellido: formData.apellido }
 
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
+      // Ejecutar la petición y el tiempo mínimo en paralelo
+      const [response] = await Promise.all([
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        }),
+        minimumLoadingTime
+      ])
 
       const data = await response.json()
 
@@ -54,23 +62,33 @@ const Login = ({ onClose, onLoginSuccess }) => {
           }))
           setSuccess(data.mensaje)
           setTimeout(() => {
-            onLoginSuccess(data)
-            onClose()
-          }, 1000)
+            setLoading(false)
+            setTimeout(() => {
+              onLoginSuccess(data)
+              onClose()
+              window.location.reload()
+            }, 500)
+          }, 500)
         } else {
           // Registro exitoso
           setSuccess(data)
           setTimeout(() => {
-            setIsLogin(true)
-            setFormData({ username: '', email: '', password: '', nombre: '', apellido: '' })
-          }, 2000)
+            setLoading(false)
+            setTimeout(() => {
+              setIsLogin(true)
+              setFormData({ username: '', email: '', password: '', nombre: '', apellido: '' })
+              setTimeout(() => {
+                setSuccess('')
+              }, 3000)
+            }, 500)
+          }, 500)
         }
       } else {
         setError(isLogin ? data.mensaje : data)
+        setLoading(false)
       }
     } catch (err) {
       setError('Error de conexión. Verifica que el backend esté funcionando.')
-    } finally {
       setLoading(false)
     }
   }
@@ -83,9 +101,14 @@ const Login = ({ onClose, onLoginSuccess }) => {
   }
 
   return (
-    <div className="login-overlay" onClick={onClose}>
-      <div className="login-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="login-close" onClick={onClose}>×</button>
+    <>
+      <LoginSpinner 
+        isVisible={loading} 
+        message={isLogin ? "AUTENTICANDO..." : "REGISTRANDO..."} 
+      />
+      <div className="login-overlay" onClick={onClose}>
+        <div className="login-modal" onClick={(e) => e.stopPropagation()}>
+          <button className="login-close" onClick={onClose}>×</button>
         
         <div className="login-header">
           <h2>{isLogin ? 'INICIAR SESIÓN' : 'REGISTRARSE'}</h2>
@@ -189,6 +212,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
         )}
       </div>
     </div>
+    </>
   )
 }
 
