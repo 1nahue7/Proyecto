@@ -37,6 +37,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
       const payload = isLogin 
         ? { username: formData.username, password: formData.password }
         : { username: formData.username, email: formData.email, password: formData.password, nombre: formData.nombre, apellido: formData.apellido }
+      
+      console.log('Intentando conectar a:', endpoint)
+      console.log('Payload:', payload)
 
       // Ejecutar la petición y el tiempo mínimo en paralelo
       const [response] = await Promise.all([
@@ -88,7 +91,8 @@ const Login = ({ onClose, onLoginSuccess }) => {
         setLoading(false)
       }
     } catch (err) {
-      setError('Error de conexión. Verifica que el backend esté funcionando.')
+      console.error('Error en la petición:', err)
+      setError(`Error de conexión: ${err.message}. Verifica que el backend esté funcionando.`)
       setLoading(false)
     }
   }
