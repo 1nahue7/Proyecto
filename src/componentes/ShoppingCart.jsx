@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useCart } from '../context/CartContext'
 import './ShoppingCart.css'
 
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [cartItems, setCartItems] = useState([])
-  const [total, setTotal] = useState(0)
-
-  useEffect(() => {
-    // Calcular total cuando cambien los items del carrito
-    const newTotal = cartItems.reduce((sum, item) => sum + item.price, 0)
-    setTotal(newTotal)
-  }, [cartItems])
+  const { cartItems, total, removeFromCart, clearCart } = useCart()
 
   const toggleCart = () => {
     setIsOpen(!isOpen)
   }
 
   const removeItem = (index) => {
-    setCartItems(prevItems => prevItems.filter((_, i) => i !== index))
-  }
-
-  const clearCart = () => {
-    setCartItems([])
+    removeFromCart(index)
   }
 
   const checkout = () => {

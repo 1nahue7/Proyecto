@@ -1,20 +1,30 @@
+import { useRef } from "react"
+import { useAddToCart } from "../hooks/useAddToCart"
 import "./Servicios.css"
 
 const Servicios = () => {
+  const { addToCartWithAnimation } = useAddToCart()
+  
   const servicios = [
     {
+      id: 1,
       titulo: "Gaming por Horas",
       precio: "$2.000/hora",
+      precioNumero: 2000,
       oferta: ["PCs Gaming de alta gama", "Monitores 144Hz", "Periféricos gaming", "Todos los juegos populares"],
     },
     {
+      id: 2,
       titulo: "Paquete 5 Horas",
       precio: "$8.000",
+      precioNumero: 8000,
       oferta: ["Descuento del 20%", "Bebida incluida", "Snack gratis", "Reserva de PC garantizada"],
     },
     {
+      id: 3,
       titulo: "Paquete Nocturno",
       precio: "$15.000",
+      precioNumero: 15000,
       oferta: [
         "8 horas (10 PM - 6 AM)",
         "Pizza personal incluida",
@@ -23,8 +33,10 @@ const Servicios = () => {
       ],
     },
     {
+      id: 4,
       titulo: "Torneo Privado",
       precio: "$50.000",
+      precioNumero: 50000,
       oferta: ["Sala privada 2 horas", "Hasta 10 jugadores", "Streaming del torneo", "Premios incluidos"],
     },
   ]
@@ -38,17 +50,37 @@ const Servicios = () => {
         </div>
 
         <div className="services-grid">
-          {servicios.map((servicios, index) => (
-            <div key={index} className="service-card">
-              <h3>{servicios.titulo}</h3>
-              <div className="price">{servicios.precio}</div>
-              <ul className="features">
-                {servicios.oferta.map((ofertas, idx) => (
-                  <li key={idx}>✓ {ofertas}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {servicios.map((servicio) => {
+            const cardRef = useRef(null)
+            
+            const handleAddToCart = () => {
+              const item = {
+                id: servicio.id,
+                name: servicio.titulo,
+                description: servicio.oferta.join(', '),
+                price: servicio.precioNumero
+              }
+              addToCartWithAnimation(item, cardRef)
+            }
+            
+            return (
+              <div key={servicio.id} className="service-card" ref={cardRef}>
+                <h3>{servicio.titulo}</h3>
+                <div className="price">{servicio.precio}</div>
+                <ul className="features">
+                  {servicio.oferta.map((oferta, idx) => (
+                    <li key={idx}>✓ {oferta}</li>
+                  ))}
+                </ul>
+                <button 
+                  className="add-to-cart-btn"
+                  onClick={handleAddToCart}
+                >
+                  AGREGAR AL CARRITO
+                </button>
+              </div>
+            )
+          })}
         </div>
 
         <section className="additional-services">
