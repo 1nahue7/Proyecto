@@ -123,6 +123,86 @@
   font-size: 0.8rem;
 }
 
+/* Botones de Agregar al Carrito */
+.add-to-cart-btn {
+  background: linear-gradient(135deg, #00ff66, #00cc66);
+  background-image:
+    linear-gradient(135deg, #00ff66, #00cc66),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.1) 2px,
+      rgba(255, 255, 255, 0.1) 4px
+    );
+  color: #000000;
+  border: 2px solid rgba(0, 255, 102, 0.3);
+  padding: 1rem 1.5rem;
+  border-radius: 0;
+  font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 15px rgba(0, 255, 102, 0.3),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.add-to-cart-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #00ff77, #00dd77);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(0, 255, 102, 0.5),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 255, 102, 0.6);
+  text-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(0, 255, 102, 0.3);
+}
+
+.add-to-cart-btn:hover::before {
+  left: 100%;
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 15px rgba(0, 255, 102, 0.4),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart-btn:focus {
+  outline: none;
+  box-shadow:
+    0 8px 25px rgba(0, 255, 102, 0.5),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 0 3px rgba(0, 255, 102, 0.3);
+}
+
 .additional-services {
   margin-top: 4rem;
 }
@@ -223,5 +303,34 @@
 
   .services-header h1 {
     font-size: 2rem;
+  }
+  
+  .add-to-cart-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1.5rem;
+  }
+  
+  .add-to-cart-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+  }
+  
+  .price {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
   }
 }
