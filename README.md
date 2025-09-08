@@ -1,12 +1,64 @@
-# React + Vite
+# 🎮 GameHubCafe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un cibercafé gaming moderno con sistema de autenticación completo.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- **React 18** con Vite
+- **Context API** para estado global
+- **CSS Modules** para estilos
+- **JWT** para autenticación
 
-## Expanding the ESLint configuration
+### Backend
+- **Java 17** con Spring Boot
+- **Spring Security** con JWT
+- **SQLite** como base de datos
+- **Maven** para gestión de dependencias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Instalación y Uso
+
+### Backend
+```bash
+cd backend
+mvn spring-boot:run
+```
+Backend disponible en: `http://localhost:8080`
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend disponible en: `http://localhost:5173`
+
+## 👤 Usuarios de Prueba
+
+- **Admin**: `admin` / `admin123`
+- **Usuario**: `usuario` / `user123`
+
+## ✨ Características
+
+- ✅ Sistema de login/registro
+- ✅ Panel de administración
+- ✅ Gestión de usuarios
+- ✅ Carrito de compras
+- ✅ Diseño responsive
+- ✅ Autenticación JWT
+
+## 📁 Estructura
+
+```
+├── backend/          # API Spring Boot
+├── frontend/         # React App
+└── README.md         # Este archivo
+```
+
+## 🔧 Desarrollo
+
+El proyecto está configurado para desarrollo con hot-reload en ambos lados.
+
+---
+
+**¡Disfruta del mejor cibercafé gaming!** 🎮

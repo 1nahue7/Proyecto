@@ -48,4 +48,9 @@ public class AuthController {
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("Backend funcionando correctamente!");
     }
+    
+    @PostMapping("/test-login")
+    public ResponseEntity<String> testLogin(@RequestBody String body) {
+        return ResponseEntity.ok("Test login endpoint funcionando! Body: " + body);
+    }
 }
